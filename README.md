@@ -47,7 +47,7 @@ Stay tuned for announcements about upcoming events and how to participate!
 
 If you have any questions or would like more information about our community, feel free to reach out:
 
-- **Email**: [info@mechinagardevs.com](mailto:dc.mechinagar@gmail.com)
-- **Website**: [www.mechinagardevs.com](https://mechinagardev.vercel.app)
+- **Email**: [info@mechinagar.dev](mailto:dc.mechinagar@gmail.com)
+- **Website**: [www.mechinagar.dev](https://mechinagardev.vercel.app)
 
 Join us in building a vibrant and supportive developers community in Mechinagar!
