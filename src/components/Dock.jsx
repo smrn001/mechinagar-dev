@@ -14,6 +14,7 @@ import {
   BrandDiscord,
   Home2,
   BrandGithub,
+  LayoutNavbarCollapse,
 } from "tabler-icons-react";
 import PropTypes from "prop-types"; // Import PropTypes
 import { Link } from "react-router-dom";
@@ -31,7 +32,7 @@ const FloatingDockDesktop = ({ items, className }) => {
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto flex h-16 gap-4 items-end border rounded-2xl bg-gray-50 px-4 pb-3 shadow-lg transition-shadow duration-200",
+        "mx-auto md:flex h-16 gap-4 items-end border hidden rounded-2xl bg-gray-50 px-4 pb-3 shadow-lg transition-shadow duration-200",
         className
       )}
     >
@@ -42,6 +43,57 @@ const FloatingDockDesktop = ({ items, className }) => {
   );
 };
 
+const FloatingDockMobile = ({ items, className }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div
+      className={cn("absolute md:hidden bottom-0 right-0 z-10 p-4", className)}
+    >
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            layoutId="nav"
+            className="absolute bottom-full mb-2  rounded-full flex flex-col gap-2"
+          >
+            {items.map((item, idx) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                exit={{
+                  opacity: 0,
+                  y: 10,
+                  transition: {
+                    delay: idx * 0.05,
+                  },
+                }}
+                transition={{ delay: (items.length - 1 - idx) * 0.05 }}
+              >
+                <Link
+                  to={item.href}
+                  key={item.title}
+                  target="_blank"
+                  className="h-10 w-10 rounded-full bg-gray-50  flex items-center justify-center"
+                >
+                  <div className="h-4 w-4">{item.icon}</div>
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <button
+        onClick={() => setOpen(!open)}
+        className="h-10 w-10 rounded-full bg-gray-50  flex items-center justify-center"
+      >
+        <LayoutNavbarCollapse className="h-5 w-5 text-neutral-500 " />
+      </button>
+    </div>
+  );
+};
 // Icon container for each item
 function IconContainer({ mouseX, title, icon, href }) {
   const ref = useRef(null);
@@ -120,7 +172,7 @@ IconContainer.propTypes = {
 };
 
 // FloatingDockDemo component
-export default function FloatingDockDemo() {
+export default function Dock() {
   const links = [
     {
       title: "Home",
@@ -149,12 +201,21 @@ export default function FloatingDockDemo() {
     },
   ];
 
+  const mobileClassName = "some-default-class"; // Define mobileClassName
+
   return (
     <div className="flex items-center fixed bottom-0 z-10 justify-center w-full">
       <FloatingDockDesktop items={links} />
+      <FloatingDockMobile items={links} className={mobileClassName} />
     </div>
   );
 }
+
+// PropTypes validation for FloatingDockMobile
+FloatingDockMobile.propTypes = {
+  items: PropTypes.array.isRequired,
+  className: PropTypes.string,
+};
 
 // PropTypes validation for FloatingDockDesktop
 FloatingDockDesktop.propTypes = {

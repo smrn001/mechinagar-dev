@@ -1,4 +1,4 @@
-import FloatingDockDemo from "./components/Navbar";
+import Dock from "./components/Dock";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
@@ -6,7 +6,7 @@ import NotFound from "./pages/NotFound";
 export default function App() {
   return (
     <>
-      <FloatingDockDemo />
+      <Dock />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="*" element={<NotFound />} />{" "}
