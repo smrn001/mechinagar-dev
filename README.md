@@ -30,7 +30,7 @@ We invite anyone interested in technology and development to join us! Here are s
 - **Attend Meetups**: Join our regular meetups to network with other members and discuss the latest technologies.
 - **Participate in Workshops**: Enhance your skills by taking part in workshops led by industry experts.
 - **Collaborate on Projects**: Work alongside fellow developers on community-driven projects and hackathons.
-- **Join Our Online Community**: Connect with us through our [Discord](https://discord.com/invite/J8Xt8GXS) or [Messenger](https://www.facebook.com/messages/e2ee/t/7889147804439990/) for real-time discussions and updates.
+- **Join Our Online Community**: Connect with us through our [Discord](https://discord.com/invite/J8Xt8GXS) or [Messenger](https://www.facebook.com/messages/t/8369762343146421) for real-time discussions and updates.
 
 ## Events
 

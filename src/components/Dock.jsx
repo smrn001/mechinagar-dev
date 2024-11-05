@@ -182,7 +182,7 @@ export default function Dock() {
     {
       title: "Messenger",
       icon: <BrandMessenger className="h-full w-full text-neutral-500" />,
-      href: "https://m.me/j/AbbEuCcBNjt-y9M3/",
+      href: "https://www.facebook.com/messages/t/8369762343146421",
     },
     {
       title: "Discord",
