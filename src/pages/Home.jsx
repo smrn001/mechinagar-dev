@@ -1,29 +1,16 @@
 const Home = () => {
   return (
-    <div className="container mx-auto p-4 max-w-3xl text-justify">
-      <h1 className="text-4xl font-bold text-center mb-6 text-gray-800">
-        Welcome to the Developers Community of Mechinagar!
-      </h1>
-      <p className="mb-4 text-gray-700 leading-relaxed">
-        We are a group of tech enthusiasts and developers who share knowledge
-        and work on projects together.
-      </p>
-      <p className="mb-4 text-gray-700 leading-relaxed">
-        Whether you&apos;re new or experienced, we invite you to connect and
-        grow with us. Together, we can explore new ideas and solve challenges.
-      </p>
-      <p className="mb-4 text-gray-700 leading-relaxed">
-        We host events, workshops, and hackathons with industry experts. Join us
-        to learn and network with other tech enthusiasts!
-      </p>
-      <div className="grid grid-cols-1 gap-4 mt-6">
-        <img
-          src="/photo/post002.jpg"
-          alt="Community Gathering"
-          className="rounded-lg shadow-md"
-        />
-      </div>
-    </div>
+    <main className="flex-grow">
+        <section className="bg-gray-50 py-16 sm:py-24">
+          <div className="container mx-auto px-4 text-center">
+            <h1 className="text-3xl sm:text-4xl font-bold">Welcome to Developers Community of Mechinagar</h1>
+            <p className="text-xl text-gray-600 my-8 md:mx-16 text-justify sm:text-center mx-2">
+              A vibrant group of tech enthusiasts and developers in Mechinagar. We share knowledge, work on projects, and host events to learn and grow together. Join us to connect, explore new ideas, and solve challenges!
+            </p>
+            <button className="bg-black text-white py-2 px-4 rounded-md font-medium">Join the Community</button>
+          </div>
+        </section>
+      </main>
   );
 };
 

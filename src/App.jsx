@@ -1,18 +1,16 @@
-import Dock from "./components/Dock";
-import { Routes, Route } from "react-router-dom";
+
 import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import FAQ from "./components/FAQ";
 
 export default function App() {
   return (
-    <>
-      <Dock />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="*" element={<NotFound />} />{" "}
-        {/* Catch-all route for 404 */}
-      </Routes>
-      <div className="bg-transparent h-20"></div>
-    </>
+    <div className="min-h-screen flex flex-col font-mono">
+      <Navbar />
+      <Home />
+      <FAQ />
+      <Footer />
+    </div>
   );
 }
