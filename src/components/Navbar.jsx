@@ -1,10 +1,20 @@
-import React from "react";
 import {
   FaDiscord,
   FaFacebook,
   FaFacebookMessenger,
-  FaLinkedin,
+  // FaLinkedin,
 } from "react-icons/fa";
+
+const socialLinks = [
+  {
+    href: "https://www.facebook.com/dc.mechinagar",
+    label: "Facebook",
+    icon: FaFacebook,
+  },
+  // { href: "#", label: "LinkedIn", icon: FaLinkedin },
+  { href: "https://discord.gg/yzgb3Sjr", label: "Discord", icon: FaDiscord },
+  { href: "#", label: "Messenger", icon: FaFacebookMessenger },
+];
 
 const Navbar = () => {
   return (
@@ -22,50 +32,19 @@ const Navbar = () => {
         </div>
         <nav>
           <ul className="flex space-x-4">
-            <li>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-700 hover:text-gray-900"
-              >
-                <span className="sr-only">Facebook</span>
-                <FaFacebook className="h-6 w-6" />
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-700 hover:text-gray-900"
-              >
-                <span className="sr-only">LinkedIn</span>
-                <FaLinkedin className="h-6 w-6" />
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-700 hover:text-gray-900"
-              >
-                <span className="sr-only">Discord</span>
-                <FaDiscord className="h-6 w-6" />
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-700 hover:text-gray-900"
-              >
-                <span className="sr-only">Messenger</span>
-                <FaFacebookMessenger className="h-6 w-6" />
-              </a>
-            </li>
+            {socialLinks.map((link, index) => (
+              <li key={index}>
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-700 hover:text-gray-900"
+                >
+                  <span className="sr-only">{link.label}</span>
+                  <link.icon className="h-6 w-6" />
+                </a>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>

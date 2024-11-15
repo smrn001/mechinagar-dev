@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import  { useState, useEffect, useRef } from "react";
+import debounce from "lodash.debounce"; // Import lodash debounce for optimization
 
 const questions = [
   {
@@ -42,7 +43,6 @@ const questions = [
     answer:
       "Yes, we have informal mentorship opportunities where experienced members can guide newcomers. We're always looking for ways to facilitate knowledge sharing within our community.",
   },
-  
 ];
 
 const FAQ = () => {
@@ -52,32 +52,38 @@ const FAQ = () => {
   const distributeItems = () => {
     const columnHeights = [0, 0, 0];
     const cols = [[], [], []];
-    
-    questions.forEach((item, index) => {
+
+    questions.forEach((item) => {
       const shortestColumn = columnHeights.indexOf(Math.min(...columnHeights));
       cols[shortestColumn].push(item);
-      // Approximate height calculation based on content length
-      columnHeights[shortestColumn] += item.question.length + item.answer.length;
+      columnHeights[shortestColumn] +=
+        item.question.length + item.answer.length;
     });
-    
+
     setColumns(cols);
   };
 
+  // Use debounce to optimize the resize event
+  const debouncedDistributeItems = debounce(distributeItems, 300);
+
   useEffect(() => {
-    distributeItems();
-    window.addEventListener('resize', distributeItems);
-    return () => window.removeEventListener('resize', distributeItems);
-  }, []);
+    distributeItems(); // Initial distribution
+    window.addEventListener("resize", debouncedDistributeItems);
+    return () => window.removeEventListener("resize", debouncedDistributeItems);
+  }, [debouncedDistributeItems]);
 
   return (
-    <div className="flex flex-col p-4 gap-2">
+    <div className="flex flex-col p-4 gap-2 items-center">
       <h1 className="text-3xl font-semibold sm:text-4xl mt-4">
         Frequently Asked Questions
       </h1>
       <p className="mb-4">
-        <span>Contact us</span> if you have any more questions.
+        <a href="#contact" className=" hover:underline">
+          Contact us
+        </a>{" "}
+        if you have any more questions.
       </p>
-      <div 
+      <div
         ref={containerRef}
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
       >
@@ -86,10 +92,12 @@ const FAQ = () => {
             {column.map((item, itemIndex) => (
               <div
                 key={itemIndex}
-                className="p-4 rounded-lg shadow-md flex flex-col items-start border-black border-[1px] gap-4 transition-all duration-300 hover:shadow-lg"
+                className="p-4 rounded-lg shadow-md flex flex-col items-start border border-gray-300 gap-4 transition-transform duration-300 hover:shadow-lg hover:translate-y-1"
               >
-                <h3 className="text-xl font-semibold">{item.question}</h3>
-                <p className="text-justify">{item.answer}</p>
+                <h3 className="text-xl font-semibold ">
+                  {item.question}
+                </h3>
+                <p className="text-justify ">{item.answer}</p>
               </div>
             ))}
           </div>
