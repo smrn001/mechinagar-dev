@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
 const questions = [
@@ -44,7 +44,7 @@ const FAQ = () => {
   };
 
   return (
-    <div className="flex flex-col p-6 gap-6 max-w-3xl mx-auto">
+    <div className="flex  flex-col p-6 gap-6 max-w-3xl mx-auto">
       <h1 className="text-4xl font-semibold text-center mt-4 text-gray-800">
         Frequently Asked Questions
       </h1>
